@@ -1,0 +1,29 @@
+<?php
+session_start();
+include("conexao_cad.php");
+
+$usuario = mysqli_real_escape_string($conexao_cad, trim($_POST['usuario']));
+$email = mysqli_real_escape_string($conexao_cad, trim($_POST['email']));
+$senha = mysqli_real_escape_string($conexao_cad, trim($_POST['senha']));
+
+$sql = "SELECT count(*) AS total FROM usuarios WHERE usuario = '$usuario'";
+$result = mysqli_query($conexao_cad, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if($row['total'] == 1) {
+	$_SESSION['usuario_existe'] = true;
+	header('Location: cadastro.php');
+	exit();
+}
+
+$sql = "INSERT INTO usuarios (usuario, email, senha) VALUES ('$usuario', '$email', '$senha')";
+if($conexao_cad->query($sql) === TRUE){
+	$_SESSION['status_cadastro'] = true;
+}
+
+$conexao_cad->close();
+
+header('Location: cadastro.php');
+exit();
+
+?>
