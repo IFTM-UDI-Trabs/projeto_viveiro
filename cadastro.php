@@ -12,6 +12,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="css/login.css">
+
+    <script type="text/javascript" src="js/login.js"></script>
 </head>
 
 <body>
@@ -42,32 +44,32 @@ session_start();
                     endif;
                     unset($_SESSION['usuario_existe']);
                     ?>
-                     <div class="notification is-danger">
-                        <p>As senhas não são iguais. Tente novamente.</p>
+                     <div id="erro" style="display: none" class="notification is-danger">
+                        <p id="txt_erro"></p>
                     </div>
                     <div class="box">
-                        <form action="cadastrar.php" method="POST">
+                        <form id="formulario" action="cadastrar.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input name="usuario" type="text" class="input is-large" placeholder="Usuário" autofocus>
+                                    <input id="username" name="usuario" type="text" class="input is-large" placeholder="Usuário" autofocus>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="email" type="text" class="input is-large" placeholder="Email">
+                                    <input id="email" name="email" type="text" class="input is-large" placeholder="Email">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="senha" class="input is-large" type="password" placeholder="Senha">
+                                    <input id="senha" name="senha" class="input is-large" type="password" placeholder="Senha">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input name="confirmar_senha" class="input is-large" type="password" placeholder="Confirme a Senha">
+                                    <input id="senha_confirm" name="confirmar_senha" class="input is-large" type="password" placeholder="Confirme a Senha">
                                 </div>
                             </div>
-                            <button type="submit" class="button is-block is-link is-large is-fullwidth">Cadastrar</button>
+                            <button onclick="cadastro()" id="btn" type="button" class="button is-block is-link is-large is-fullwidth">Cadastrar</button>
                         </form>
                     </div>
                 </div>
