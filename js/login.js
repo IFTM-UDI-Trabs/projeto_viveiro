@@ -45,8 +45,6 @@ function cadastro(){
          
         	var provedor  = email.substring(pos_arroba + 1, email.length);
 
-          // e_email = carlos@iftm.edu.br
-          // provedor = "iftm.edu.br"
 			var pos_ponto = provedor.indexOf(".");
 
 			if (pos_ponto < 1){
