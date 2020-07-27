@@ -31,16 +31,18 @@ $_SESSION['table'] = $usuario;
 
 
 
-$create_table = "CREATE TABLE $_SESSION['table'] (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);"
+$create_table = "CREATE TABLE " . $usuario . "(
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(220) NOT NULL,
+color VARCHAR(10) NOT NULL,
+start DATETIME NOT NULL,
+end DATETIME NOT NULL,
+type INT(1) NOT NULL
+)";
 
 if($conexao_cad->query($sql) === TRUE){
 	$_SESSION['status_cadastro'] = true;
+	$criatabela = mysqli_query( $conexao_cad , $create_table);
 }
 
 $conexao_cad->close();
