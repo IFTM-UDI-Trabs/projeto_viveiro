@@ -51,13 +51,13 @@ $resultado = mysqli_query($conexao_cad, $result_events);
      
           
       // },
-      select: function (info) {
+      select: function(start, end) {
             //alert('Início do evento: ' + info.start.toLocaleString());
             // $('#cadastrar #start').val(info.start.toLocaleString());
             // $('#cadastrar #end').val(info.end.toLocaleString());
-            // $('#cadastrar').modal('show');
-            $('#cadastrar').dataToggle('modal')
-            $('#cadastrar').dataTarget('myModal')
+            $('#cadastrar').modal('show');
+            // $('#cadastrar').dataToggle('modal');
+            // $('#cadastrar').dataTarget('myModal');
         },
       eventClick: function(arg) {
         if (confirm('Are you sure you want to delete this event?')) {
