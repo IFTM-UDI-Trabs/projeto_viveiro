@@ -58,6 +58,8 @@ $resultado = mysqli_query($conexao_cad, $result_events);
         },
       eventClick: function(arg){
 
+        voltar(this);
+
         var selec = arg.event.startStr;
         var selec_end = arg.event.endStr;
 
@@ -83,6 +85,68 @@ $resultado = mysqli_query($conexao_cad, $result_events);
         $(".row #title").html(titulo);
         $(".row #start").html(inicio);
         $(".row #end").html(fim);
+
+        $("#editevent #id").val(id);
+        $("#editevent #title").val(titulo);
+
+        selec = selec.replace("T", " ");
+        
+        var ano = selec.substring(0, 4);
+        var mes = selec.substring(5, 7);
+        var dia = selec.substring(8, 10);
+
+        selec = dia + "/" + mes + "/" + ano + " " + inicio;
+        $("#editevent #start").val(selec);
+
+        if (selec_end == "" || selec_end == 0){
+
+          dia = parseInt(dia);
+          dia++;
+          if (mes == "01" && dia == 32 || mes == "03" && dia == 32 || mes == "05" && dia == 32 || mes == "07" && dia == 32 || mes == "08" && dia == 32 || mes == "10" && dia == 32 || mes == "12" && dia == 32){
+            dia = 01;
+            dia = "0" + dia.toString();
+            mes = parseInt(mes);
+            mes++;
+            if (mes == 13){
+              mes = 01;
+              mes = "0" + mes.toString();
+              ano = parseInt(ano);
+              ano++;
+              ano = ano.toString();
+            }
+          } else if (mes == "02" && dia == 31 || mes == "04" && dia == 31 || mes == "06" && dia == 31 || mes == "09" && dia == 31 || mes == "11" && dia == 31){
+            dia = 01;
+            dia = "0" + dia.toString();
+            mes = parseInt(mes);
+            mes++;
+            if (mes == 13){
+              mes = 01;
+              mes = "0" + mes.toString();
+              ano = parseInt(ano);
+              ano++;
+              ano = ano.toString();
+            }
+
+          } else {
+            dia = "0" + dia.toString();
+          }
+
+        } else {
+          var ano_fim = selec.substring(0, 4);
+          var mes_fim = selec.substring(5, 7);
+          var dia_fim = selec.substring(8, 10);
+
+          selec_end = dia_fim + "/" + mes_fim + "/" + ano_fim + " " + fim;
+        }
+
+        if (fim == "00:00:00"){
+          selec_end = dia + "/" + mes + "/" + ano + " 00:00:00";
+          $("#editevent #end").val(selec_end);
+        } else {
+          selec_end = dia_fim + "/" + mes_fim + "/" + ano_fim + " " + fim;
+        }
+
+        
 
         $('#visualizar').modal('show');
 
@@ -201,10 +265,10 @@ $resultado = mysqli_query($conexao_cad, $result_events);
                                 <dt class="col-sm-3">Fim do evento</dt>
                                 <dd class="col-sm-9" id="end"></dd>
                             </dl>
-                            <button class="btn btn-warning btn-canc-vis">Editar</button>
+                            <button class="btn btn-warning btn-canc-vis" onclick="editar(this)">Editar</button>
                             <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a>
                         </div>
-                        <div class="formedit" style="visibility: hidden;">
+                        <div class="formedit" style="display: none;">
                             <span id="msg-edit"></span>
                             <form id="editevent" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id" >
@@ -247,7 +311,7 @@ $resultado = mysqli_query($conexao_cad, $result_events);
 
                                 <div class="form-group row">
                                     <div class="col-sm-10">
-                                        <button type="button" class="btn btn-primary btn-canc-edit">Cancelar</button>
+                                        <button type="button" class="btn btn-primary btn-canc-edit" onclick="voltar(this)">Cancelar</button>
                                         <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-warning">Salvar</button>                                    
                                     </div>
                                 </div>

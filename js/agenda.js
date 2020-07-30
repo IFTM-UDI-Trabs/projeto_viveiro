@@ -87,6 +87,22 @@ function cad(event){
     }
 }
 
+function editar(arg){
+    var item = document.getElementsByClassName("formedit")[0];
+    item.style.display = "block";
+
+    var item_2 = document.getElementsByClassName("visevent")[0];
+    item_2.style.display = "none";
+}
+
+function voltar(arg){
+    var item = document.getElementsByClassName("formedit")[0];
+    item.style.display = "none";
+
+    var item_2 = document.getElementsByClassName("visevent")[0];
+    item_2.style.display = "block";
+}
+
 // $(document).ready( function() {
 //     $('#addevent').on('submit', function(event) {
 //         event.preventDefault();
