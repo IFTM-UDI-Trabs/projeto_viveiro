@@ -40,7 +40,9 @@ function cad(event){
     if ( titulo != "" ){
         if ( cor != ""){
 
-            document.getElementById("addevent").submit()
+
+                document.getElementById("addevent").submit()
+                // header('Location: cad_event.php');
 
             // $.ajax({
             //     url: "test.html"
