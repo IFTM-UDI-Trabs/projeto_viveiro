@@ -40,9 +40,7 @@ function cad(event){
     if ( titulo != "" ){
         if ( cor != ""){
 
-            $("#addevent").submit(function(event) {
-                document.getElementById("addevent").submit()
-            });
+            document.getElementById("addevent").submit()
 
             // $.ajax({
             //     url: "test.html"
