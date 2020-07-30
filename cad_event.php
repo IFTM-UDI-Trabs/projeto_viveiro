@@ -43,7 +43,11 @@ echo "'$title', '$color', '$data_start_conv', '$data_end_conv', '$pega', '$cont'
 //     $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento cadastrado com sucesso!</div>';
 // }
 
-$query_event = "INSERT INTO test ( `id` , `title` , `color` , `start` , `end` ) VALUES ('$cont', '$title', '$color', $data_start_conv', '$data_end_conv')";
+$query_event = "INSERT INTO " .$pega. " (id, title, color, start, end) VALUES ('$cont', '$title', '$color', '$data_start_conv', '$data_end_conv')";
+$insere = mysqli_query($conexao_cad, $query_event);
+
+header('Location: agenda.php');
+
 
 // $insert_event = $conexao_cad->prepare($query_event);
 // $insert_event->bindParam(':title', $dados['title']);
