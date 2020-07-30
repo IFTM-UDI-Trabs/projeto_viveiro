@@ -30,22 +30,79 @@ function DataHora(evento, objeto) {
     }
 }
 
-$(document).ready( function() {
-    $("#addevent").on("submit", function (event) {
+function cad(event){
+    event.preventDefault();
+    
+
+    var titulo = $('#title').val();
+    var cor = $("#color").val();
+
+    if ( titulo != "" ){
+        if ( cor != ""){
+
+            $("#addevent").submit(function(event) {
+                document.getElementById("addevent").submit()
+            });
+
+            // $.ajax({
+            //     url: "test.html"
+            //     // title: $('#title').val(),
+            //     // color: $("#color").val(),
+            //     // start: $("#start").val(),
+            //     // end: $("#end").val(),
+            //     // contentType: false,
+            //     // processData: false,
+            //     // success: function (retorna) {
+            //     //     if (retorna['sit']) {
+            //     //         //$("#msg-cad").html(retorna['msg']);
+            //     //         location.reload();
+            //     //     } else {
+            //     //         $("#msg-cad").html(retorna['msg']);
+            //     //     }
+            //     // }
+            // })
+
+            // var posting = $.post({
+            //     method: "POST",
+            //     url: "cad_event.php",
+            //     title: $('#title').val(),
+            //     color: $("#color").val(),
+            //     start: $("#start").val(),
+            //     end: $("#end").val()
+            // });
+
+            // posting.done(function() {
+            //     // location.reload();
+            //     alert("Deu certo!!")
+            // });
+
+            // posting.fail(function() {
+            //     $('#result').text('failed');
+            // });
+        } else {
+            event.preventDefault();
+        }
+    } else {
         event.preventDefault();
-        // $.ajax({
-        //     method: "POST",
-        //     url: "cad_event.php",
-        //     data: new FormData(this),
-        //     contentType: false,
-        //     processData: false,
-        //     success: function (retorna) {
-        //         if (retorna['sit']) {
-        //             //$("#msg-cad").html(retorna['msg']);
-        //             location.reload();
-        //         } else {
-        //             $("#msg-cad").html(retorna['msg']);
-        //         }
-        //     }
-        // })
-    });
+    }
+}
+
+// $(document).ready( function() {
+//     $('#addevent').on('submit', function(event) {
+//         event.preventDefault();
+//         $.ajax({
+//             method: "POST",
+//             url: "cad_event.php",
+//             data: new FormData(this),
+//             contentType: false,
+//             processData: false,
+//             success: function (retorna) {
+//                 if (retorna['sit']) {
+//                     //$("#msg-cad").html(retorna['msg']);
+//                     location.reload();
+//                 } else {
+//                     $("#msg-cad").html(retorna['msg']);
+//                 }
+//             }
+//         })
+//     });

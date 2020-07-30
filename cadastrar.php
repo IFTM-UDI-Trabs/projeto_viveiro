@@ -8,6 +8,7 @@
 
 <?php
 session_start();
+
 include("conexao_cad.php");
 include("js/valida_cadastro.js");
 
@@ -47,7 +48,7 @@ if($conexao_cad->query($sql) === TRUE){
 
 $conexao_cad->close();
 
-header('Location: cadastro.php');
+header('Location: painel.php');
 exit();
 
 ?>
