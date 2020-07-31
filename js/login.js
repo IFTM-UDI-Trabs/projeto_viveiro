@@ -1,17 +1,17 @@
-function verifica_vazio(){
+function verifica_vazio() {
 	var x = document.form.usuario.value;
 	var y = document.form.senha.value;
 
-	if(x == ""){
+	if (x == "") {
 		document.getElementsByClassName("notification")[1].classList.add(" Aparece");
 	}
 }
 
-function mudar_pagina(){
-  window.location.href = "cadastro.php"
+function mudar_pagina() {
+	window.location.href = "cadastro.php"
 }
 
-function cadastro(){
+function cadastro() {
 
 	var erro = false;
 	var txt = "";
@@ -27,68 +27,74 @@ function cadastro(){
 	var confirmacao = document.getElementById("senha_confirm").value;
 
 
-	if (usuario == ""){
+	if (usuario == "") {
 		erro = true;
 		txt += "O Campo Usuário não pode ficar vazio!<br>";
 	}
 
-	if (email == ""){
+	if (email == "") {
 		erro = true;
 		txt += "O Campo Email não pode ficar vazio!<br>";
-	} else{
-		var pos_arroba = email.indexOf("@"); 
+	} else {
+		var pos_arroba = email.indexOf("@");
 
-		if (pos_arroba < 1){
+		if (pos_arroba < 1) {
 			erro = true;
-			txt += "Email inválido.<br>"; 	  
-		} else{		    
-         
-        	var provedor  = email.substring(pos_arroba + 1, email.length);
+			txt += "Email inválido.<br>";
+		} else {
+
+			var provedor = email.substring(pos_arroba + 1, email.length);
 
 			var pos_ponto = provedor.indexOf(".");
 
-			if (pos_ponto < 1){
+			if (pos_ponto < 1) {
 
-			    erro = true;
+				erro = true;
 				txt += "Email inválido.<br>";
 
-			} else{
+			} else {
 
-		        if (pos_ponto == provedor.length - 1){
-		        	
-		        	erro = true;
-		          	txt += "Email inválido.<br>";
+				if (pos_ponto == provedor.length - 1) {
 
-		        }
-	      	}	  
+					erro = true;
+					txt += "Email inválido.<br>";
+
+				}
+			}
 		}
 	}
 
-	if (senha == ""){
+	if (senha == "") {
 		erro = true;
 		txt += "O Campo Senha não pode ficar vazio!<br>";
-	} else if (senha.length < 6 || senha.length > 10){
+	} else if (senha.length < 6 || senha.length > 10) {
 		erro = true;
 		txt += "A senha deve ter de 6 a 10 dígitos!<br>";
 	}
 
-	if (confirmacao != senha){
+	if (confirmacao != senha) {
 		erro = true;
 		txt += "O Campo Confirmar Senha deve ser igual ao Campo Senha!<br>";
 	}
 
-	if (erro == true){
+	if (erro == true) {
 		print.innerHTML = txt;
-	} else{
+	} else {
 		form.submit();
 	}
 
-	if (erro == false){
+	if (erro == false) {
 		msg.style.display = "none";
-	} else{
+	} else {
 		msg.style.display = "inline-block";
 	}
 
-	
 
+
+}
+function $(id) {
+	return document.getElementById(id);
+}
+window.onload = function () {
+	window.location = "agenda.php";
 }

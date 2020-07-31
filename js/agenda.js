@@ -87,6 +87,27 @@ function cad(event){
     }
 }
 
+function edit(event){
+    event.preventDefault();
+    
+
+    var titulo = $('#titulo').val();
+    var cor = $("#cor").val();
+
+    if ( titulo != "" ){
+        if ( cor != ""){
+
+
+                document.getElementById("editevent").submit()
+
+        } else {
+            event.preventDefault();
+        }
+    } else {
+        event.preventDefault();
+    }
+}
+
 function editar(arg){
     var item = document.getElementsByClassName("formedit")[0];
     item.style.display = "block";

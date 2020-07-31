@@ -266,22 +266,22 @@ $resultado = mysqli_query($conexao_cad, $result_events);
                                 <dd class="col-sm-9" id="end"></dd>
                             </dl>
                             <button class="btn btn-warning btn-canc-vis" onclick="editar(this)">Editar</button>
-                            <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a>
+                            <a href="apagar_event.php" id="apagar_evento" class="btn btn-danger">Apagar</a>
                         </div>
                         <div class="formedit" style="display: none;">
                             <span id="msg-edit"></span>
-                            <form id="editevent" method="POST" enctype="multipart/form-data">
+                            <form id="editevent" method="POST" enctype="multipart/form-data" action="edit_event.php" onsubmit="edit(event)">
                                 <input type="hidden" name="id" id="id" >
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Título</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
+                                        <input type="text" name="title" class="form-control" id="titulo" placeholder="Título do evento">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Color</label>
                                     <div class="col-sm-10">
-                                        <select name="color" class="form-control" id="color">
+                                        <select name="color" class="form-control" id="cor">
                                             <option value="">Selecione</option>         
                                             <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
                                             <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
@@ -312,7 +312,7 @@ $resultado = mysqli_query($conexao_cad, $result_events);
                                 <div class="form-group row">
                                     <div class="col-sm-10">
                                         <button type="button" class="btn btn-primary btn-canc-edit" onclick="voltar(this)">Cancelar</button>
-                                        <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-warning">Salvar</button>                                    
+                                        <button type="submit" name="EditEvent" id="EditEvent" value="EditEvent" class="btn btn-warning">Salvar</button>                                    
                                     </div>
                                 </div>
                             </form>                            
