@@ -4,11 +4,12 @@ session_start();
 include_once ('conexao_cad.php');
 // include_once ('edit_event.php');
 // include ('agenda.php');
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+$id = $_POST['id'];
 
 $pega = $_SESSION['usuario'];
 
-$query_event = "DELETE FROM `" .$pega. "` WHERE `id` = '$id' ";
+$query_event = "DELETE FROM `" .$pega. "` WHERE `" .$pega. "`.`id` = '$id' ";
 $insere = mysqli_query($conexao_cad, $query_event);
 
 echo "$pega, $id";
