@@ -1,27 +1,36 @@
 <?php
-/*
- * This is needed for cookie based authentication to encrypt password in
- * cookie
+/* vim: set expandtab sw=4 ts=4 sts=4: */
+/**
+ * phpMyAdmin sample configuration, you can use it as base for
+ * manual configuration. For easier setup you can use setup/
+ *
+ * All directives are explained in documentation in the doc/ folder
+ * or at <https://docs.phpmyadmin.net/>.
+ *
+ * @package PhpMyAdmin
  */
-$cfg['blowfish_secret'] = 'xampp'; /* YOU SHOULD CHANGE THIS FOR A MORE SECURE COOKIE AUTH! */
 
-/*
+/**
+ * This is needed for cookie based authentication to encrypt password in
+ * cookie. Needs to be 32 chars long.
+ */
+$cfg['blowfish_secret'] = $_ENV['PHPMYADMIN_BLOWFISH_SECRET']; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+
+/**
  * Servers configuration
  */
 $i = 0;
 
-/*
+/**
  * First server
  */
 $i++;
-
-/* Authentication type and info */
-$cfg['Servers'][$i]['auth_type'] = 'config';
-$cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['password'] = '';
-$cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['AllowNoPassword'] = true;
-$cfg['Lang'] = '';
+/* Authentication type */
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
+/* Server parameters */
+$cfg['Servers'][$i]['host'] = $_ENV['MYSQL_HOST'];
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /* Bind to the localhost ipv4 address and tcp */
 $cfg['Servers'][$i]['host'] = '127.0.0.1';
