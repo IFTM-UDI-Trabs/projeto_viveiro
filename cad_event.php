@@ -28,13 +28,13 @@ $sql = "SELECT id FROM `".$pega."`";
 $result = mysqli_query($conexao_cad, $sql);
 $row = mysqli_fetch_assoc($result);
 
-// $cont = 0;
+$cont =2;
 
-// while ($row = mysqli_fetch_array($result)){
-//     $cont++;
-// }
+while ($row = mysqli_fetch_array($result)){
+    $cont++;
+}
 
-// echo "'$title', '$color', '$data_start_conv', '$data_end_conv', '$pega', '$cont'";
+echo "'$title', '$color', '$data_start_conv', '$data_end_conv', '$pega', '$cont'";
 
 // $sql = "INSERT INTO test (title, color, start, end) VALUES (test, '#40E0D0', '2020-07-07 14:00:00', '2020-07-07 00:00:00' )";
 
@@ -43,7 +43,7 @@ $row = mysqli_fetch_assoc($result);
 //     $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Evento cadastrado com sucesso!</div>';
 // }
 
-$query_event = "INSERT INTO " .$pega. " (title, color, start, end) VALUES ('$title', '$color', '$data_start_conv', '$data_end_conv')";
+$query_event = "INSERT INTO " .$pega. " (id, title, color, start, end) VALUES ('$cont', '$title', '$color', '$data_start_conv', '$data_end_conv')";
 $insere = mysqli_query($conexao_cad, $query_event);
 
 header('Location: agenda.php');
