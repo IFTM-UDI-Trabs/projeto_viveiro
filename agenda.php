@@ -89,6 +89,7 @@ $resultado = mysqli_query($conexao_cad, $result_events);
         $(".row #end").html(fim);
 
         $("#editevent #id").val(id);
+        $("#apagarevent #id").val(id);
         $("#editevent #title").val(titulo);
 
         selec = selec.replace("T", " ");
