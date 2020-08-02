@@ -10,11 +10,13 @@ $resultado = mysqli_query($conexao_cad, $result_events);
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='utf-8' />
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<link href='css/main.min.css' rel='stylesheet' />
-<link href='css/agenda.css' rel='stylesheet' />
+<link href='css/main.min.css' rel='stylesheet' type='text/css'>
+<link href='css/agenda.css' type='text/css' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="css/agenda_menu.css">
 <script src='js/main.min.js'></script>
 <script src='js/pt-br.js'></script>
 <script src='js/agenda.js'></script>
@@ -206,6 +208,16 @@ $resultado = mysqli_query($conexao_cad, $result_events);
         
 </head>
 <body>
+
+  <header id="menu">
+    <a href="painel.php">
+      <img src="img/viveiro_logo.png" alt="Logo do Projeto Viveiro">
+    </a>
+    <nav id="lista-menu">
+      <button onclick="window.location.href = 'painel.php'">Painel</button>
+      <button onclick="window.location.href = 'logout.php'">Sair da Conta</button>
+    </nav>
+  </header>
 
   <div id='calendar'></div>
 

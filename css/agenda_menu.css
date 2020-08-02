@@ -1,0 +1,56 @@
+body{
+    position: relative;
+}
+
+#menu{
+    width: 100vw;
+
+    padding: 2vh 5vw;
+
+    border-bottom: .3vw solid green;
+    background-color: white;
+
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 10;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#menu img {
+    width: 10vw;
+  }
+
+#calendar{
+    margin-top: 12vh;
+}
+
+#lista-menu{
+    width: 20vw;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#lista-menu button{
+    height: 100%;
+    font-size: 20px;
+    padding: 0vh 1vw;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    background-color: white;
+    border: none;
+}
+
+#lista-menu button:nth-child(1){
+    padding: 1vh 2.8vw;
+
+    
+}
