@@ -1,0 +1,129 @@
+body, html{
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    background-image: linear-gradient(to bottom left, rgba(0, 39, 0, 0.89), rgb(125, 228, 125));
+
+    font-family: 'Roboto', sans-serif;
+}
+
+#nav {
+    width: 90vw;
+    --height: 70vh;
+    height: var(--height);
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: calc(100vh - 85vh);
+    
+    border: 6px solid rgb(57, 95, 57);
+    border-radius: 5vw;
+
+    box-sizing: border-box;
+
+    font-size: 35px;
+}
+
+.img{
+    margin-top: -1vh;
+}
+
+.buttons{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+
+    margin: auto;
+
+
+    
+}
+
+.buttons a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 20px 55px;
+    border-radius: 1vw;
+
+    display: inline-block;
+    background-color: black;
+    font-size: 30px;
+
+}
+
+.buttons a:nth-child(1){
+    padding: 20px 70px;
+}
+
+.buttons a:hover{
+    background-color: rgb(43, 71, 43);
+}
+
+
+@media (max-width: 600px){
+    #nav{
+
+        border: 1.5vw solid green;
+        border-radius: 5vw;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+
+        font-size: 20px;
+
+        height: 40vh;
+
+        margin-top: calc(100vh - 70vh);
+
+    }
+    .img{
+        margin-top: 1.5vh;
+        display: inline-block;
+        width: 50vw;
+    }
+    .buttons{
+        margin-top: 2vh;
+        width: 80%;
+    }
+    .buttons a{  
+        font-size: 20px;
+        border-radius: 2.5vw;
+        padding: 12px 15px;
+    }
+    .buttons a:nth-child(1){
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 300px){
+    #nav{
+        padding-top: 11vw;
+        padding-bottom: 11vw;
+
+        font-size: 15px;
+    }
+    .buttons a{
+        padding: 12px 10px;
+    }
+    .buttons a:nth-child(1){
+        padding: 12px 15px;
+    }
+}
+
+@media (min-height: 800px){
+    .img{
+        margin-top: 5vh;
+    }
+}
