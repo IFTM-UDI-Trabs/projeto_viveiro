@@ -3,7 +3,7 @@ session_start();
 include_once("conexao_cad.php");
 
 $pega = $_SESSION['usuario'];
-$result_events = "SELECT id, title, color, start, end FROM " .$pega;
+$result_events = "SELECT `id`, `title`, `color`, `start`, `end` FROM `" .$pega. "`";
 $resultado = mysqli_query($conexao_cad, $result_events);
 ?>
 
@@ -80,6 +80,8 @@ $resultado = mysqli_query($conexao_cad, $result_events);
         id = arg.event.id;
 
         titulo = arg.event.title;
+
+        // $("#apagar_evento").val(id);
 
         $(".row #id").html(id);
         $(".row #title").html(titulo);
@@ -185,6 +187,20 @@ $resultado = mysqli_query($conexao_cad, $result_events);
     calendar.render();
   });
 
+  // function apagar(this){
+  //   
+  //   $id =  
+
+  //   
+  //   $pega = $_SESSION['usuario'];
+     
+  //   $query_event = "DELETE FROM `" .$pega. "` WHERE `id` = '$id' ";
+  //   $insere = mysqli_query($conexao_cad, $query_event);
+     
+  //   echo "$pega, $id";
+  //   ?>
+  // }
+
 </script>
         
 </head>
@@ -277,22 +293,23 @@ $resultado = mysqli_query($conexao_cad, $result_events);
                                 <dd class="col-sm-9" id="end"></dd>
                             </dl>
                             <button class="btn btn-warning btn-canc-vis" onclick="editar(this)">Editar</button>
-                            <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a>
+                            <button id="apagar_evento" class="btn btn-danger" onclick="apagar(this)">Apagar</button>
+                            <!-- <a href="" id="apagar_evento" class="btn btn-danger">Apagar</a> -->
                         </div>
                         <div class="formedit" style="display: none;">
                             <span id="msg-edit"></span>
-                            <form id="editevent" method="POST" enctype="multipart/form-data">
+                            <form id="editevent" method="POST" enctype="multipart/form-data" action="edit_event.php" onsubmit="edit(event)">
                                 <input type="hidden" name="id" id="id" >
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Título</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="title" class="form-control" id="title" placeholder="Título do evento">
+                                        <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título do evento">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Color</label>
                                     <div class="col-sm-10">
-                                        <select name="color" class="form-control" id="color">
+                                        <select name="cor" class="form-control" id="cor">
                                             <option value="">Selecione</option>         
                                             <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
                                             <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
@@ -328,6 +345,19 @@ $resultado = mysqli_query($conexao_cad, $result_events);
                                 </div>
                             </form>                            
                         </div>
+                        <div class="formapag" style="display: none;">
+                            <span id="msg-edit"></span>
+                            <form id="apagarevent" method="POST" enctype="multipart/form-data" action="apagar_event.php">
+                                <input type="hidden" name="id" id="id" >
+                                <div class="form-group row">
+                                    <!-- <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja apagar?</h5> -->
+                                    <!-- <label class="col-sm-2 col-form-label">Tem certeza que deseja apagar?</label> -->
+                                    <div class="col-sm-10">
+                                      <button type="button" class="btn btn-primary btn-canc-edit" onclick="voltarapag(this)">Cancelar</button>
+                                      <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-danger">Apagar</button>
+                                    </div>
+                                </div>
+                        </div>        
                     </div>
                 </div>
             </div>

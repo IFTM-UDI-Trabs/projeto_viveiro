@@ -86,6 +86,25 @@ function cad(event){
         event.preventDefault();
     }
 }
+function edit(event){
+    event.preventDefault();
+    
+
+    var titulo = $('#titulo').val();
+    var cor = $("#cor").val();
+
+    if ( titulo != "" ){
+        if ( cor != ""){
+
+            document.getElementById("editevent").submit()
+
+        } else {
+            event.preventDefault();
+        }
+    } else {
+        event.preventDefault();
+    }
+}
 
 function editar(arg){
     var item = document.getElementsByClassName("formedit")[0];
@@ -103,6 +122,21 @@ function voltar(arg){
     item_2.style.display = "block";
 }
 
+function apagar(arg){
+    var item = document.getElementsByClassName("formapag")[0];
+    item.style.display = "block";
+
+    var item_2 = document.getElementsByClassName("visevent")[0];
+    item_2.style.display = "none";
+}
+
+function voltarapag(arg){
+    var item = document.getElementsByClassName("formapag")[0];
+    item.style.display = "none";
+
+    var item_2 = document.getElementsByClassName("visevent")[0];
+    item_2.style.display = "block";
+}
 // $(document).ready( function() {
 //     $('#addevent').on('submit', function(event) {
 //         event.preventDefault();

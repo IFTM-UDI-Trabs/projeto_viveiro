@@ -28,13 +28,13 @@ $sql = "SELECT id FROM `".$pega."`";
 $result = mysqli_query($conexao_cad, $sql);
 $row = mysqli_fetch_assoc($result);
 
-$cont =2;
+// $cont =0;
 
-while ($row = mysqli_fetch_array($result)){
-    $cont++;
-}
+// while ($row = mysqli_fetch_array($result)){
+//     $cont++;
+// }
 
-echo "'$title', '$color', '$data_start_conv', '$data_end_conv', '$pega', '$cont'";
+// echo "'$title', '$color', '$data_start_conv', '$data_end_conv', '$pega', '$cont'";
 
 // $sql = "INSERT INTO test (title, color, start, end) VALUES (test, '#40E0D0', '2020-07-07 14:00:00', '2020-07-07 00:00:00' )";
 
