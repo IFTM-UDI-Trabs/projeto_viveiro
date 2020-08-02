@@ -97,14 +97,17 @@ $resultado = mysqli_query($conexao_cad, $result_events);
 
         selec = dia + "/" + mes + "/" + ano + " " + inicio;
         $("#editevent #start").val(selec);
+        console.log(selec)
 
-        if (selec_end == "" || selec_end == 0){
+        if (fim == "00:00:00" || fim == 0){
 
           dia = parseInt(dia);
+          console.log(typeof dia)
           dia++;
           if (mes == "01" && dia == 32 || mes == "03" && dia == 32 || mes == "05" && dia == 32 || mes == "07" && dia == 32 || mes == "08" && dia == 32 || mes == "10" && dia == 32 || mes == "12" && dia == 32){
             dia = 01;
             dia = "0" + dia.toString();
+            // console.log(dia)
             mes = parseInt(mes);
             mes++;
             if (mes == 13){
@@ -117,6 +120,7 @@ $resultado = mysqli_query($conexao_cad, $result_events);
           } else if (mes == "02" && dia == 31 || mes == "04" && dia == 31 || mes == "06" && dia == 31 || mes == "09" && dia == 31 || mes == "11" && dia == 31){
             dia = 01;
             dia = "0" + dia.toString();
+            // console.log(dia)
             mes = parseInt(mes);
             mes++;
             if (mes == 13){
@@ -128,13 +132,20 @@ $resultado = mysqli_query($conexao_cad, $result_events);
             }
 
           } else {
+            if (dia >= 10){
+              dia = dia.toString();
+            } else {
             dia = "0" + dia.toString();
+            }
+            console.log(dia)
           }
 
         } else {
           var ano_fim = selec.substring(0, 4);
           var mes_fim = selec.substring(5, 7);
           var dia_fim = selec.substring(8, 10);
+
+          console.log(dia_fim)
 
           selec_end = dia_fim + "/" + mes_fim + "/" + ano_fim + " " + fim;
         }
